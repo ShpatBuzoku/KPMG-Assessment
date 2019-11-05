@@ -11,7 +11,7 @@ public class Article {
 	private String title;
 	private String body;
 	private String author;
-	private int likes;
+	//private int likes;
 	protected Article() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -49,12 +49,12 @@ public class Article {
 	public void setAuthor(String author) {
 		this.author = author;
 	}
-	public int getLikes() {
-		return likes;
-	}
-	public void setLikes(int likes) {
-		this.likes = likes;
-	}
+//	public int getLikes() {
+//		return likes;
+//	}
+//	public void setLikes(int likes) {
+//		this.likes = likes;
+//	}
 	
 	
 }

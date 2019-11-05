@@ -10,12 +10,27 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 </head>
 <body>
-
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand">Pressford</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#">Home</a></li>
+      <li><a href="new">Post Articles</a></li>
+      <li><a href="#">Page 2</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="log"><span class="glyphicon glyphicon-log-out"></span> Log Out</a></li>
+    </ul>
+  </div>
+</nav>
 <div class="container">
-  <h2>Pressford's Articles</h2>        
+  <h2>Pressford's Articles</h2> 
   <table class="table table-hover">
     <thead>
       <tr>
+      	<th>Article Id No.</th>
         <th>Title</th>
         <th>Content</th>
         <th>Author</th>
@@ -25,10 +40,16 @@
     </thead>
     <tbody>
 		<tr th:each="article : ${listArticles}">
+			<td th:text="${article.id}">Id</td>
 			<td th:text="${article.title}">Title</td>
 			<td th:text="${article.body}">Content</td>
 			<td th:text="${article.author}">Author</td>
 			<td></td>
+				<td>
+					<a th:href="@{'/edit/' + ${article.id}}">Edit</a>
+						&nbsp;&nbsp;&nbsp;&nbsp;
+					<a th:href="@{'/delete/' + ${article.id}}">Delete</a>
+				</td>
 		</tr>
     </tbody>
   </table>
