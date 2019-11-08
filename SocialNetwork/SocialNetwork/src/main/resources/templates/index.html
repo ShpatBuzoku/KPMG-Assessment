@@ -2,82 +2,87 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <html lang="en">
 <head>
-  <title>Pressford Social Network</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<title>Pressford Social Network</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 </head>
 <body>
-<nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand">Pressford</a>
-    </div>
-    <ul class="nav navbar-nav">
-      <li class="active"><a href="#">Home</a></li>
-      <li><a href="new">Post Articles</a></li>
-      <li><a href="#">Page 2</a></li>
-    </ul>
-    <ul class="nav navbar-nav navbar-right">
-      <li><a href="log"><span class="glyphicon glyphicon-log-out"></span> Log Out</a></li>
-    </ul>
-  </div>
-</nav>
-<div class="container">
-  <h2>Pressford's Articles</h2> 
-  <h3>Most Liked Article</h3>
-  <table class="table table-hover">
-    <thead>
-      <tr class="active">
-        <th>Title</th>
-        <th>Content</th>
-        <th>Author</th>
-        <th>Date</th>
-        <th>Likes</th>
-        <th> </th>
-      </tr>
-    </thead>
-    <tbody>
-    <tr class="success">
-		<td th:text="${pageModel.mostLiked.title}"></td>
-		<td th:text="${pageModel.mostLiked.body}"></td>
-		<td th:text="${pageModel.mostLiked.author}"></td>
-		<td th:text="${pageModel.mostLiked.published}"></td>
-		<td th:text="${pageModel.mostLiked.likes}"></td>
-		<th> </th>
-	</tr>
-    </tbody>
-  </table>
- <h3>Other Articles</h3>
-  <table class="table table-hover">
-    <thead>
-      <tr>
-        <th>Title</th>
-        <th>Content</th>
-        <th>Author</th>
-        <th>Date</th>
-        <th>Likes</th>
-        <th> </th>
-      </tr>
-    </thead>
-    <tbody>
-		<tr th:each="article : ${pageModel.listArticles}">
-			<td th:text="${article.title}"></td>
-			<td th:text="${article.body}"></td>
-			<td th:text="${article.author}"></td>
-			<td th:text="${article.published}"></td>
-			<td th:text="${article.likes}"></td>
-			<td>
-				<a th:href="@{'/edit/' + ${article.id}}">Edit</a>
-					&nbsp;&nbsp;&nbsp;&nbsp;
-				<a th:href="@{'/delete/' + ${article.id}}">Delete</a>
-			</td>
-		</tr>
-    </tbody>
-  </table>
-</div>
+	<nav class="navbar navbar-inverse">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand">Pressford</a>
+			</div>
+			<ul class="nav navbar-nav">
+				<li class="active"><a href="#">Home</a></li>
+				<li><a href="new">Post Articles</a></li>
+				<li><a href="dummy">About</a></li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="log"><span class="glyphicon glyphicon-log-out"></span>
+						Log Out</a></li>
+			</ul>
+		</div>
+	</nav>
+	<div class="container">
+		<h2>Pressford's Articles</h2>
+		<h3>Most Liked Article</h3>
+		<table class="table table-hover">
+			<thead>
+				<tr class="active">
+					<th>Title</th>
+					<th>Content</th>
+					<th>Author</th>
+					<th>Date</th>
+					<th>Likes</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class="success">
+					<td th:text="${pageModel.mostLiked.title}"></td>
+					<td th:text="${pageModel.mostLiked.body}"></td>
+					<td th:text="${pageModel.mostLiked.author}"></td>
+					<td th:text="${pageModel.mostLiked.published}"></td>
+					<td th:text="${pageModel.mostLiked.likes}"></td>
+					<th></th>
+				</tr>
+			</tbody>
+		</table>
+		<h3>Other Articles</h3>
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th>Title</th>
+					<th>Content</th>
+					<th>Author</th>
+					<th>Date</th>
+					<th>Likes</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="article : ${pageModel.listArticles}">
+					<td th:text="${article.title}"></td>
+					<td th:text="${article.body}"></td>
+					<td th:text="${article.author}"></td>
+					<td th:text="${article.published}"></td>
+					<td th:text="${article.likes}"></td>
+					<td><a th:href="@{'/edit/' + ${article.id}}"> <span
+							class="glyphicon glyphicon-pencil"></span>
+					</a> &nbsp;&nbsp;&nbsp;&nbsp; <a
+						th:href="@{'/delete/' + ${article.id}}"> <span
+							class="glyphicon glyphicon-trash"></span>
+					</a></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
 
 </body>
 </html>

@@ -2,92 +2,97 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <html lang="en">
 <head>
-  <title>Pressford Social Network</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <style>
-    .fa {
-     font-size: 25px;
-     cursor: pointer;
-     user-select: none;
-     }
+<title>Pressford Social Network</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+.fa {
+	font-size: 25px;
+	cursor: pointer;
+	user-select: none;
+}
 
-	.fa:hover {
-  		color: darkblue;
+.fa:hover {
+	color: darkblue;
 }
 </style>
 </head>
 <body>
-<nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand">Pressford</a>
-    </div>
-    <ul class="nav navbar-nav">
-      <li class="active"><a href="#">Home</a></li>
-      <li><a href="#">Page 2</a></li>
-    </ul>
-    <ul class="nav navbar-nav navbar-right">
-      <li><a href="log"><span class="glyphicon glyphicon-log-out"></span> Log Out</a></li>
-    </ul>
-  </div>
-</nav>
-<div class="container">
-  <h2>Pressford's Articles</h2> 
-  <h3>Most Liked Article</h3>
-  <table class="table table-hover">
-    <thead>
-      <tr class="active">
-        <th>Title</th>
-        <th>Content</th>
-        <th>Author</th>
-        <th>Date</th>
-        <th>Likes</th>
-        <th> </th>
-      </tr>
-    </thead>
-    <tbody>
-    <tr class="success">
-		<td th:text="${pageModel.mostLiked.title}"></td>
-		<td th:text="${pageModel.mostLiked.body}"></td>
-		<td th:text="${pageModel.mostLiked.author}"></td>
-		<td th:text="${pageModel.mostLiked.published}"></td>
-		<td th:text="${pageModel.mostLiked.likes}"></td>
-		<th> </th>
-	</tr>
-    </tbody>
-  </table>
- <h3>Other Articles</h3>
-  <table class="table table-hover">
-    <thead>
-      <tr class="active">
-        <th>Title</th>
-        <th>Content</th>
-        <th>Author</th>
-        <th>Date</th>
-        <th>Likes</th>
-        <th> </th>
-      </tr>
-    </thead>
-    <tbody>
-		<tr th:each="article : ${pageModel.listArticles}">
-			<td th:text="${article.title}"></td>
-			<td th:text="${article.body}"></td>
-			<td th:text="${article.author}"></td>
-			<td th:text="${article.published}"></td>
-			<td th:text="${article.likes}"></td>
-			<td>
-				<a th:href="@{'/like/' + ${article.id}}">Like</a>
-				&nbsp;&nbsp;
-				<a th:href="@{'/dislike/' + ${article.id}}">Dislike</a>
-			</td>
-		</tr>
-    </tbody>
-  </table>
-</div>
+	<nav class="navbar navbar-inverse">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand">Pressford</a>
+			</div>
+			<ul class="nav navbar-nav">
+				<li class="active"><a href="#">Home</a></li>
+				<li><a href="dummy">About</a></li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="log"><span class="glyphicon glyphicon-log-out"></span>
+						Log Out</a></li>
+			</ul>
+		</div>
+	</nav>
+	<div class="container">
+		<h2>Pressford's Articles</h2>
+		<h3>Most Liked Article</h3>
+		<table class="table table-hover">
+			<thead>
+				<tr class="active">
+					<th>Title</th>
+					<th>Content</th>
+					<th>Author</th>
+					<th>Date</th>
+					<th>Likes</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class="success">
+					<td th:text="${pageModel.mostLiked.title}"></td>
+					<td th:text="${pageModel.mostLiked.body}"></td>
+					<td th:text="${pageModel.mostLiked.author}"></td>
+					<td th:text="${pageModel.mostLiked.published}"></td>
+					<td th:text="${pageModel.mostLiked.likes}"></td>
+					<th></th>
+				</tr>
+			</tbody>
+		</table>
+		<h3>Other Articles</h3>
+		<table class="table table-hover">
+			<thead>
+				<tr class="active">
+					<th>Title</th>
+					<th>Content</th>
+					<th>Author</th>
+					<th>Date</th>
+					<th>Likes</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="article : ${pageModel.listArticles}">
+					<td th:text="${article.title}"></td>
+					<td th:text="${article.body}"></td>
+					<td th:text="${article.author}"></td>
+					<td th:text="${article.published}"></td>
+					<td th:text="${article.likes}"></td>
+					<td><a th:href="@{'/like/' + ${article.id}}"> <span
+							class="glyphicon glyphicon-thumbs-up"></span>
+					</a> &nbsp; <a th:href="@{'/dislike/' + ${article.id}}"> <span
+							class="glyphicon glyphicon-thumbs-down"></span>
+					</a></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
 </body>
 </html>
