@@ -8,6 +8,18 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+    .fa {
+     font-size: 25px;
+     cursor: pointer;
+     user-select: none;
+     }
+
+	.fa:hover {
+  		color: darkblue;
+}
+</style>
 </head>
 <body>
 <nav class="navbar navbar-inverse">
@@ -17,7 +29,6 @@
     </div>
     <ul class="nav navbar-nav">
       <li class="active"><a href="#">Home</a></li>
-      <li><a href="new">Post Articles</a></li>
       <li><a href="#">Page 2</a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
@@ -53,7 +64,7 @@
  <h3>Other Articles</h3>
   <table class="table table-hover">
     <thead>
-      <tr>
+      <tr class="active">
         <th>Title</th>
         <th>Content</th>
         <th>Author</th>
@@ -70,14 +81,13 @@
 			<td th:text="${article.published}"></td>
 			<td th:text="${article.likes}"></td>
 			<td>
-				<a th:href="@{'/edit/' + ${article.id}}">Edit</a>
-					&nbsp;&nbsp;&nbsp;&nbsp;
-				<a th:href="@{'/delete/' + ${article.id}}">Delete</a>
+				<a th:href="@{'/like/' + ${article.id}}">Like</a>
+				&nbsp;&nbsp;
+				<a th:href="@{'/dislike/' + ${article.id}}">Dislike</a>
 			</td>
 		</tr>
     </tbody>
   </table>
 </div>
-
 </body>
 </html>

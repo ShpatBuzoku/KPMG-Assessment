@@ -18,9 +18,26 @@ public class AppController {
 
 	@RequestMapping("/")
 	public String viewHomePage(Model model) {
-		List<Article> listArticles = service.listAll();
-		model.addAttribute("listArticles", listArticles);
+		
+		EmployeePageModel pageModel = new EmployeePageModel();
+		
+		pageModel.listArticles = service.listAll();
+		pageModel.mostLiked = service.mostLiked();
+		
+		model.addAttribute("pageModel", pageModel);
 		return "index";
+	}
+	
+	@RequestMapping("/employee")
+	public String viewEmployeeHomePage(Model model) {
+		
+		EmployeePageModel pageModel = new EmployeePageModel();
+		
+		pageModel.listArticles = service.listAll();
+		pageModel.mostLiked = service.mostLiked();
+		
+		model.addAttribute("pageModel", pageModel);
+		return "employee";
 	}
 	
 	@RequestMapping("/new")
@@ -40,10 +57,9 @@ public class AppController {
 	@RequestMapping("/edit/{id}")
 	public ModelAndView showEditArticleForm(@PathVariable(name ="id")int id) {
 		ModelAndView mav = new ModelAndView("edit_article");
-		
+
 		Article article = service.get(id);
 		mav.addObject("article", article);
-		
 		return mav;
 	}
 	
@@ -52,6 +68,18 @@ public class AppController {
 		service.delete(id);
 		
 		return "redirect:/";
+	}
+	
+	@RequestMapping("/like/{id}")
+	public String likeArticle(@PathVariable(name="id") int id) {
+		service.like(id);
+		return "redirect:/employee";
+	}
+	
+	@RequestMapping("/dislike/{id}")
+	public String dislikeArticle(@PathVariable(name="id") int id) {
+		service.dislike(id);
+		return "redirect:/employee";
 	}
 	
 	@RequestMapping("/log")

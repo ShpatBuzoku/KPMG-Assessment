@@ -26,4 +26,24 @@ public class ArticleService {
 	public void delete(int id) {
 		repo.deleteById(id);
 	}
+	
+	public void like(int id) {
+		repo.likeArticle(id);
+	}
+	
+	public void dislike(int id) {
+		repo.dislikeArticle(id);
+	}
+	
+	public Article mostLiked(){
+		
+		Article article =  new Article();
+		
+		for(Article a : repo.findAll()) {
+			if(article.getLikes() < a.getLikes())
+				article = a;
+		}
+		
+		return article;
+	}
 }

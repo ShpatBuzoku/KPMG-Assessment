@@ -21,7 +21,7 @@
       <li><a href="#">Page 2</a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
-          <li><a href="#"><span class="glyphicon glyphicon-log-out"></span> Log Out</a></li>
+          <li><a href="log"><span class="glyphicon glyphicon-log-out"></span> Log Out</a></li>
     </ul>
   </div>
 </nav>
@@ -46,9 +46,29 @@
         <input type="author" class="form-control" id="author" placeholder="Write your name" name="author" th:field="*{author}">
       </div>
     </div>
+    <div class="form-group">
+        <!-- <input type="hidden" class="form-control" id="publishDate" name="publishDate" th:field="*{publishDate}"> -->
+      </div>
     <div class="form-group">        
       <div class="col-sm-offset-2 col-sm-10">
-        <button type="submit" class="btn btn-default">Submit</button>
+        <button type="submit" class="btn btn-default" >Post</button>
+        
+        <p id="p01"></p>
+
+<script>
+/* function myFunction() {
+  var message, x;
+  message = document.getElementById("p01");
+  message.innerHTML = "";
+  x = document.getElementById("title").value;
+  try { 
+    if(x == "")  throw "empty";
+  }
+  catch(err) {
+    message.innerHTML = "Input is " + err;
+  }
+} */
+</script>
       </div>
     </div>
   </form>

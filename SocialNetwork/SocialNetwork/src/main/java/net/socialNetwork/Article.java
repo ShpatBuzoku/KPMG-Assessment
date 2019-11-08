@@ -1,5 +1,9 @@
 package net.socialNetwork;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,10 +15,16 @@ public class Article {
 	private String title;
 	private String body;
 	private String author;
-	//private int likes;
+	private String published;
+	private int likes;
+	
+	private DateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 	protected Article() {
 		super();
 		// TODO Auto-generated constructor stub
+		
+		Date date = new Date();
+		this.published = sdf.format(date);
 	}
 	
 	@Id
@@ -37,24 +47,22 @@ public class Article {
 	public void setBody(String body) {
 		this.body = body;
 	}
-//	public int getPublishDate() {
-//		return publishDate;
-//	}
-//	public void setPublishDate(int publishDate) {
-//		this.publishDate = publishDate;
-//	}
+	public String getPublished() {
+		return published;
+	}
+	public void setPublished(String published) {
+		this.published = published;//sdf.format(date);
+	}
 	public String getAuthor() {
 		return author;
 	}
 	public void setAuthor(String author) {
 		this.author = author;
 	}
-//	public int getLikes() {
-//		return likes;
-//	}
-//	public void setLikes(int likes) {
-//		this.likes = likes;
-//	}
-	
-	
+	public int getLikes() {
+		return likes;
+	}
+	public void setLikes(int likes) {
+		this.likes = likes;
+	}	
 }
